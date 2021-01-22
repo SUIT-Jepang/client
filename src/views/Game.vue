@@ -25,6 +25,7 @@
       </div>
     </div>
     <button @click="reset" class="btn btn-danger">Mulai dari 0 !</button>
+    <button class="btn btn-outline-danger" @click="leaveRoom">Back To Loby</button>
   </div>
 </template>
 
@@ -50,6 +51,10 @@ export default {
     }
   },
   methods: {
+    leaveRoom () {
+      this.$socket.emit('leaveRoom', this.room)
+      this.$router.push({ name: 'Room' })
+    },
     choose (choose) {
       if (choose === 'batu') {
         this.totalCounter.batu++
