@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 export default {
   data () {
     return {
@@ -97,12 +98,14 @@ export default {
 
       if (batu >= 20 || kertas >= 20 || gunting >= 20) {
         console.log('ada yg menang')
+        const winner = this.winner
+        this.reset()
 
         Swal.fire({
-            title: `The winner is ${this.winner} !`,
-            text: 'Do you want to play again ?',
-            icon: 'success',
-            confirmButtonText: 'Yes, of course'
+          title: `The winner is ${winner} !`,
+          text: 'Do you want to play again ?',
+          icon: 'success',
+          confirmButtonText: 'Yes, of course'
         })
       }
     }
