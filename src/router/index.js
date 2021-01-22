@@ -30,6 +30,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.name !== 'Login' && !localStorage.name) next({ name: 'Login' })
+  if(to.name === 'Login' && localStorage.name) next({ name: 'Room' })
   else next()
 })
 

@@ -24,7 +24,7 @@
         </button>
       </div>
     </div>
-    <button @click="reset" class="btn btn-danger">Mulai dari 0 !</button>
+    <button @click="reset" class="btn btn-outline-danger mr-3">Mulai dari 0 !</button>
     <button class="btn btn-outline-danger" @click="leaveRoom">Back To Loby</button>
   </div>
 </template>

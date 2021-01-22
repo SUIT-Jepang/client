@@ -6,7 +6,8 @@
     <div class="container my-2 d-flex">
       <div class="w-25 mx-auto">
         <input v-model="room" type="text" placeholder="Create Room" class="form-control my-3"/>
-        <button  class="btn btn-primary my-5">Create Room</button>
+        <button  class="btn btn-primary my-2">Create Room</button><br>
+        <button class="btn btn-primary" @click.prevent="logout"> Logout </button>
       </div>
       <div class="d-flex w-50 flex-column card p-5 shadow">
         <div class="mb-5">
@@ -33,6 +34,10 @@ export default {
     }
   },
   methods: {
+    logout () {
+      localStorage.clear()
+      this.$router.push('/')
+    },
     joinRoom (room) {
       this.$socket.emit('joinRoom', room)
     }
