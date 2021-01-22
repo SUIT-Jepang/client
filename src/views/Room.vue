@@ -6,17 +6,17 @@
     <div class="container my-2 d-flex">
       <div class="w-25 mx-auto">
         <input v-model="room" type="text" placeholder="Create Room" class="form-control my-3"/>
-        <button @click="createRoom" class="btn btn-primary my-5">Create Room</button>
+        <button  class="btn btn-primary my-5">Create Room</button>
       </div>
       <div class="d-flex w-50 flex-column card p-5 shadow">
         <div class="mb-5">
             <button class="btn btn-danger">Available Room, please select</button>
         </div>
         <div class="d-flex flex-column container">
-          <button class="btn btn-outline-danger my-1">Room Dayu</button>
-          <button class="btn btn-outline-danger my-1">Room Romi</button>
-          <button class="btn btn-outline-danger my-1">Room Rozak</button>
-          <button class="btn btn-outline-danger my-1">Room Hamzah</button>
+          <button class="btn btn-outline-danger my-1" @click="joinRoom('room1')">Room Dayu</button>
+          <button class="btn btn-outline-danger my-1" @click="joinRoom('room2')">Room Romi</button>
+          <button class="btn btn-outline-danger my-1" @click="joinRoom('room3')">Room Rozak</button>
+          <button class="btn btn-outline-danger my-1" @click="joinRoom('room4')">Room Hamzah</button>
         </div>
       </div>
     </div>
@@ -33,8 +33,8 @@ export default {
     }
   },
   methods: {
-    createRoom () {
-      console.log('>>> room : ', this.room)
+    joinRoom (room) {
+      this.$socket.emit('joinRoom', room)
     }
   }
 }

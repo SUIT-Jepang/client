@@ -36,25 +36,26 @@
 
 <script>
 export default {
-  name: "Login",
-  data() {
+  name: 'Login',
+  data () {
     return {
-      name: "",
-    };
+      name: ''
+    }
   },
   methods: {
-    login() {
-      this.$socket.emit("login", this.name);
-      // localStorage.setItem('name', this.name)
-    },
+    login () {
+      this.$socket.emit('login', this.name)
+      localStorage.setItem('name', this.name)
+      this.$router.push('/room')
+    }
   },
   sockets: {
-    login(payload) {
-      console.log(payload);
-      localStorage.setItem("user", payload.name);
-    },
-  },
-};
+    login (payload) {
+      console.log(payload)
+      localStorage.setItem('user', payload.name)
+    }
+  }
+}
 </script>
 
 <style>
