@@ -18,17 +18,34 @@ export default {
     data () {
         return {
             userChoose : '',
-            user: 'Rozak'
+            user: localStorage.getItem('name'),
+            games: [],
+            totalCounter: { gunting: 10, kertas: 20, batu: 5 }
         }
     },
     methods: {
       choose (choose) {
-          console.log('>>> click', choose)
-          this.userChoose = choose
+        if (choose == 'batu') {
+            this.totalCounter.batu++
+        } else if (choose == 'gunting') {
+            this.totalCounter.gunting++
+        } else if (choose == 'kertas') {
+            this.totalCounter.kertas++
+        }
+        console.log(totalCounter)
+        this.userChoose = choose
       },
       submit(){
+        this.$socket.emit
+        this.games.push({ player: this.user, weapon:this.userChoose })
+        this.userChoose = ''
         console.log('>>> submit',this.userChoose)
       }
+    },
+    socket: {
+        init (payload) {
+            this.games = payload
+        }
     }
 }
 </script>
